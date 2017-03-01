@@ -70,7 +70,9 @@ h1{
     <div class="smalltext">Seconds</div>
   </div>
 </div>
-<iframe src="https://mapex.maps.arcgis.com/apps/webappviewer/index.html?id=98fa17ece44d4d0cb7416718883443c9" style="border:0px #ffffff none;" width="100%" frameborder="0" marginheight="0px" marginwidth="0px" id="ifm"></iframe>
+<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Kansas City Sweet 16" src="//mapex.maps.arcgis.com/apps/Embed/index.html?webmap=f8d34478c7204c0e9a3d84af078740de&amp;extent=-94.5936,39.0891,-94.5696,39.0999&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=dark"></iframe></div>
+
+<!--<iframe src="https://mapex.maps.arcgis.com/apps/webappviewer/index.html?id=98fa17ece44d4d0cb7416718883443c9" style="border:0px #ffffff none;" width="100%" frameborder="0" marginheight="0px" marginwidth="0px" id="ifm"></iframe>-->
 
 <script type="text/javascript">
 function getTimeRemaining(endtime) {
@@ -86,17 +88,6 @@ function getTimeRemaining(endtime) {
     'minutes': minutes,
     'seconds': seconds
   };
-}
-
-function pageY(elem) {
-    return elem.offsetParent ? (elem.offsetTop + pageY(elem.offsetParent)) : elem.offsetTop;
-}
-
-function resizeIframe() {
-    var height = document.documentElement.clientHeight;
-    height -= pageY(document.getElementById('ifm'))+ buffer ;
-    height = (height < 0) ? 0 : height;
-    document.getElementById('ifm').style.height = height + 'px';
 }
 
 function initializeClock(id, endtime) {
@@ -125,18 +116,6 @@ function initializeClock(id, endtime) {
 
 var deadline = new Date("March 22, 2017 00:00:00");
 initializeClock("clockdiv", deadline);
-	
-var buffer = 10; //scroll bar buffer
-var iframe = document.getElementById('ifm');
-
-// .onload doesn't work with IE8 and older.
-if (iframe.attachEvent) {
-    iframe.attachEvent("onload", resizeIframe);
-} else {
-    iframe.onload=resizeIframe;
-}
-
-window.onresize = resizeIframe;
 	
 </script>
 
