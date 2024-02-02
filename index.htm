@@ -5,9 +5,10 @@
 body{
     text-align: center;
     background: #33B2FF;
-  font-family: sans-serif;
-  font-weight: 100;
-  height: 100%
+	font-family: sans-serif;
+	font-weight: 100;
+	height: 100%;
+	margin: 0px	
 }
 
 h1{
@@ -45,13 +46,18 @@ h1{
     padding-top: 5px;
     font-size: 16px;
 }
+iframe{      
+	display: block;  /* iframes are inline by default */   
+	height: calc(100vh - 192px);  /* Set height to 100% of the viewport height */   
+	width: 100vw;  /* Set width to 100% of the viewport width */     
+	border: none; /* Remove default border */
+}
+
     </style>
 </head>	
 <body>
 
-<!--
 <h1>Countdown to Sweet Sixteen!!!</h1>
---> 
 <div id="clockdiv">
   <div>
     <span class="days"></span>
@@ -70,9 +76,8 @@ h1{
     <div class="smalltext">Seconds</div>
   </div>
 </div>
-<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Kansas City Sweet 16" src="//mapex.maps.arcgis.com/apps/Embed/index.html?webmap=f8d34478c7204c0e9a3d84af078740de&amp;extent=-94.5936,39.0891,-94.5696,39.0999&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=dark"></iframe></div>
 
-<!--<iframe src="https://mapex.maps.arcgis.com/apps/webappviewer/index.html?id=98fa17ece44d4d0cb7416718883443c9" style="border:0px #ffffff none;" width="100%" frameborder="0" marginheight="0px" marginwidth="0px" id="ifm"></iframe>-->
+<iframe src="https://www.arcgis.com/apps/instant/media/index.html?appid=136a6ce810e044598da929d0b732065b"></iframe>
 
 <script type="text/javascript">
 function getTimeRemaining(endtime) {
@@ -114,7 +119,7 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = new Date("March 22, 2017 00:00:00");
+var deadline = new Date("March 27, 2024 00:00:00");
 initializeClock("clockdiv", deadline);
 	
 </script>
