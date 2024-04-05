@@ -59,9 +59,8 @@ iframe{
 <body>
 
 <div id="title">
-<!--<h1>Countdown to Sweet Sixteen!!!</h1>-->
-<h1>Sweet Sixteen Detroit!!!</h1>
-<!--div id="clockdiv">
+<h1>Countdown to Sweet Sixteen!!!</h1>
+<div id="clockdiv">
   <div>
     <span class="days"></span>
     <div class="smalltext">Days</div>
@@ -78,10 +77,10 @@ iframe{
     <span class="seconds"></span>
     <div class="smalltext">Seconds</div>
   </div>
-</div>-->
+</div>
 </div>
 
-<iframe id="frame" scrolling="auto" frameborder="0" title="Detroit Sweet 16" allow="geolocation https://experience.arcgis.com" class="" src="https://experience.arcgis.com/experience/3b811137830148d297edac492d54bf37"></iframe>
+<iframe id="frame" scrolling="auto" frameborder="0" title="San Francisco Sweet 16" allow="geolocation https://experience.arcgis.com" class="" src="https://experience.arcgis.com/experience/022d90740db8431d9bcf4d83ab1fd50e/"></iframe>
 
 <script type="text/javascript">
 function getTimeRemaining(endtime) {
@@ -123,13 +122,13 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = new Date("March 27, 2024 01:00:00");
-//initializeClock("clockdiv", deadline);
+var deadline = new Date("March 27, 2025 01:00:00");
+initializeClock("clockdiv", deadline);
 
 var title = document.getElementById("title");
 var frame = document.getElementById("frame");
-//var height = title.offsetHeight + 10;
-var height = title.offsetHeight + 20;
+var height = title.offsetHeight + 10;
+//var height = title.offsetHeight + 20;
 frame.style.height = `calc(100dvh - ${height}px)`
 
 </script>
