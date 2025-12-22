@@ -80,56 +80,50 @@ iframe{
 </div>
 </div>
 
-<iframe id="frame" scrolling="auto" frameborder="0" title="San Francisco Sweet 16" allow="geolocation https://experience.arcgis.com" class="" src="https://experience.arcgis.com/experience/022d90740db8431d9bcf4d83ab1fd50e/"></iframe>
+<iframe id="frame" scrolling="auto" frameborder="0" title="Houston Sweet 16" allow="geolocation https://experience.arcgis.com" class="" src="https://experience.arcgis.com/experience/cb3cdbbbdcf845efb38efdd7a57ed2a6/"></iframe>
 
-<script type="text/javascript">
-function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((t / 1000) % 60);
-  var minutes = Math.floor((t / 1000 / 60) % 60);
-  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-  var days = Math.floor(t / (1000 * 60 * 60 * 24));
-  return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
+<script>
+function getTimeRemaining(deadlineMs) {
+  const t = deadlineMs - Date.now(); // Date.now() is an absolute instant
+  const seconds = Math.floor((t / 1000) % 60);
+  const minutes = Math.floor((t / 1000 / 60) % 60);
+  const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return { total: t, days, hours, minutes, seconds };
 }
 
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
+function initializeClock(id, deadlineMs) {
+  const clock = document.getElementById(id);
+  const daysSpan = clock.querySelector('.days');
+  const hoursSpan = clock.querySelector('.hours');
+  const minutesSpan = clock.querySelector('.minutes');
+  const secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
-    var t = getTimeRemaining(endtime);
-
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-    }
+    const t = getTimeRemaining(deadlineMs);
+    daysSpan.textContent = t.days;
+    hoursSpan.textContent = ('0' + t.hours).slice(-2);
+    minutesSpan.textContent = ('0' + t.minutes).slice(-2);
+    secondsSpan.textContent = ('0' + t.seconds).slice(-2);
+    if (t.total <= 0) clearInterval(timeinterval);
   }
 
   updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
+  const timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = new Date("March 26, 2025 01:00:00");
-initializeClock("clockdiv", deadline);
+// Set the specific timezone for the event:
+const deadline = new Date('2026-03-25T15:00:00-05:00');
+// Or equivalently, in UTC:
+//const deadline = new Date('2026-03-25T05:00:00Z');
 
-var title = document.getElementById("title");
-var frame = document.getElementById("frame");
-var height = title.offsetHeight + 10;
-//var height = title.offsetHeight + 20;
-frame.style.height = `calc(100dvh - ${height}px)`
+initializeClock('clockdiv', deadline.getTime());
+
+// keep your iframe sizing code
+const title = document.getElementById('title');
+const frame = document.getElementById('frame');
+const height = title.offsetHeight + 10;
+frame.style.height = `calc(100dvh - ${height}px)`;
 
 </script>
 
